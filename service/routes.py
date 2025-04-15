@@ -25,19 +25,18 @@ def health():
     ######################################################################
     # READ AN ACCOUNT
     ######################################################################
-    @app.route("/accounts/<int:account_id>", methods=["GET"])
+@app.route("/accounts/<int:account_id>", methods=["GET"])
     def get_accounts(account_id):
         """
         Reads an Account
         This endpoint will read an Account based the account_id that is requested
         """
         app.logger.info("Request to read an Account with id: %s", account_id)
-
-        # use the Account.find() method to find the account
-        # abort() with a status.HTTP_404_NOT_FOUND if it cannot be found
-        # return the serialize() version of the account with a return code of status.HTTP_200_OK
-
-        return {the account as json here + 200}
+        account = Account.find(account_id)
+        if not account:
+            abort(status.HTTP_404_NOT_FOUND, f"Account with id [{account_id}] could not be found.")
+        return account.serialize(), status.HTTP_200_OK
+       
 ######################################################################
 @app.route("/")
 def index():
@@ -134,7 +133,7 @@ def create_accounts():
         if account:
             account.delete()
         return "", status.HTTP_204_NO_CONTENT
-        
+
 ######################################################################
 #  U T I L I T Y   F U N C T I O N S
 ######################################################################
