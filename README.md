@@ -1,7 +1,6 @@
 ## this is my readme
 
 # DevOps Capstone Template
-# ![Build Status](https://github.com/<OWNER>/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)
 
 ![Build Status](https://github.com/tinos21/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)
 
