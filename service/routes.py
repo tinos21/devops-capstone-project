@@ -1,4 +1,8 @@
+"""
+Account Service
 
+This microservice handles the lifecycle of Accounts
+"""
 
 from flask import jsonify, request, make_response, abort, url_for
 from service.models import Account
@@ -136,3 +140,4 @@ def check_content_type(media_type):
         status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
         f"Content-Type must be {media_type}",
     )
+    
