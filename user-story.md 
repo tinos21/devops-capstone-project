@@ -1,4 +1,27 @@
+**As a** developer
+**I need** to containerize the Accounts microservice using Docker
+**So that** the application can be deployed consistently across different environments
 
-As a customer,
-I need to search products by name,
-So that I can quickly find items I want to buy.
+### Details and Assumptions
+
+* A Dockerfile will be created for the Accounts microservice
+* The Docker image will be built and tested locally
+* The image will be pushed to a container registry
+* The container will run as a non-root user for security
+* The application uses PostgreSQL as its backend database
+
+### Acceptance Criteria
+
+```gherkin
+Given the Accounts microservice source code
+When a Docker image is built using the Dockerfile
+Then the image should build successfully without errors
+
+Given a built Docker image
+When the container is started
+Then the Accounts service should initialize successfully
+
+Given a running container
+When a request is sent to the health endpoint
+Then the service should return HTTP 200 OK
+```
